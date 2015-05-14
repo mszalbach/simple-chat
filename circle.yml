@@ -6,4 +6,4 @@ dependencies:
     - mvn integration-test
 test:
   override:
-    - echo "Hallo"
+    - true
