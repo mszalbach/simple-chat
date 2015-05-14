@@ -3,7 +3,7 @@ machine:
     - docker
 dependencies:
   override:
-    - mvn integration-test
+    - mvn package -B
 test:
   override:
     - echo "do nothing since cache works better in dependency phase"
