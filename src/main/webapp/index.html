@@ -6,51 +6,51 @@
     <script type="text/javascript">
         var ws;
 
-        $( document ).ready( function () {
+        $(document).ready(function () {
             //ws://domain:port#/webcontext(project name)/serverendpoint
-            ws = new WebSocket( "ws://" + getRootUrl() + "/simple-chat/websocket" );
+            ws = new WebSocket("ws://" + getRootUrl() + "/simple-chat/websocket");
 
-            ws.onopen = function ( event ) {
+            ws.onopen = function (event) {
             };
 
-            ws.onmessage = function ( event ) {
-                onMessage( event )
+            ws.onmessage = function (event) {
+                onMessage(event)
             };
 
-            ws.onclose = function ( event ) {
+            ws.onclose = function (event) {
             };
 
-            ws.onerror = function ( event ) {
-                alert( "Error :  " + event.data );
+            ws.onerror = function (event) {
+                alert("Error :  " + event.data);
             };
 
-        } );
+        });
 
-        function onLogin( event ) {
-            $( '#name' ).val( $( '#name' ).val() + event.data + "\n" );
+        function onLogin(event) {
+            $('#name').val($('#name').val() + event.data + "\n");
         }
 
 
-        function onMessage( event ) {
-            $( '#messages' ).val( $( '#messages' ).val() + event.data + "\n" );
-            $( '#messages' ).animate( {
-                                          scrollTop: $( '#messages' ).height()
-                                      }, 1000 );
+        function onMessage(event) {
+            $('#messages').val($('#messages').val() + event.data + "\n");
+            $('#messages').animate({
+                scrollTop: $('#messages').height()
+            }, 1000);
         }
 
         function sendMessage() {
-            var message = $( '#name' ).val() + " - " + $( '#message' ).val();
-            ws.send( message );
-            $( '#message' ).val( '' );
+            var message = $('#name').val() + " - " + $('#message').val();
+            ws.send(message);
+            $('#message').val('');
         }
 
         function getRootUrl() {
             var defaultPorts = {"http:": 80, "https:": 443};
 
-            return  window.location.hostname
+            return window.location.hostname
                     + (((window.location.port)
                     && (window.location.port != defaultPorts[window.location.protocol]))
-                    ? (":" + window.location.port) : "");
+                            ? (":" + window.location.port) : "");
         }
 
     </script>

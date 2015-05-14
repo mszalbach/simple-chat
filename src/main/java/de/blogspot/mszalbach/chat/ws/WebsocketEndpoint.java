@@ -15,45 +15,41 @@ import java.util.Set;
  * Time: 1:50 PM
  * To change this template use File | Settings | File Templates.
  */
-@ServerEndpoint( "/websocket" )
+@ServerEndpoint("/websocket")
 public class WebsocketEndpoint {
 
     // Create a Set to hold client sessions
-    private static final Set<Session> clientSessions = Collections.synchronizedSet( new HashSet<Session>() );
-
+    private static final Set<Session> clientSessions = Collections.synchronizedSet(new HashSet<Session>());
 
 
     @OnOpen
-    public void onOpen( Session aClientSession )
+    public void onOpen(Session aClientSession)
             throws IOException {
-        clientSessions.add( aClientSession );
-        aClientSession.getBasicRemote().sendText( "Login: " + new Date() );
+        clientSessions.add(aClientSession);
+        aClientSession.getBasicRemote().sendText("Login: " + new Date());
     }
-
 
 
     @OnClose
-    public void onClose( Session aClientSession ) {
-        clientSessions.remove( aClientSession );
+    public void onClose(Session aClientSession) {
+        clientSessions.remove(aClientSession);
     }
 
 
-
     @OnMessage
-    public void onMessage( String message, Session client )
+    public void onMessage(String message, Session client)
             throws IOException,
             EncodeException {
 
-        for ( Session clientSession : clientSessions ) {
-            clientSession.getAsyncRemote().sendText( message );
+        for (Session clientSession : clientSessions) {
+            clientSession.getAsyncRemote().sendText(message);
         }
     }
 
 
-
     @OnError
-    public void onError( Session aclientSession, Throwable aThrowable ) {
-        System.out.println( "Error : " + aclientSession + " " + aThrowable );
+    public void onError(Session aclientSession, Throwable aThrowable) {
+        System.out.println("Error : " + aclientSession + " " + aThrowable);
 
     }
 
