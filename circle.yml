@@ -1,3 +1,6 @@
 machine:
   services:
     - docker
+dependencies:
+  post:
+    - mvn dependency:resolve-plugins
