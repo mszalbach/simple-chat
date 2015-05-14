@@ -54,6 +54,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>2.8.6-SNAPSHOT</version>
                 <configuration>
+                    <!-- used for linux docker. For boot2docker use the ip from "boot2docker ip" command. -->
                     <host>unix:///var/run/docker.sock</host>
                 </configuration>
             </plugin>
@@ -64,7 +65,7 @@
                 <version>1.4.14</version>
                 <configuration>
                     <container>
-                        <containerId>glassfish4x</containerId>
+                        <containerId>wildfly8x</containerId>
                         <type>remote</type>
                     </container>
                     <configuration>
@@ -73,24 +74,15 @@
                             <cargo.remote.username>admin</cargo.remote.username>
                             <cargo.remote.password>admin</cargo.remote.password>
                             <cargo.hostname>localhost</cargo.hostname>
-                            <cargo.rmi.port>4848</cargo.rmi.port>
-                            <cargo.remote.port>8080</cargo.remote.port>
-                            <cargo.glassfish.domain.name>domain1</cargo.glassfish.domain.name>
-                            <cargo.runtime.args>force=true</cargo.runtime.args>
-                            <cargo.protocol>https</cargo.protocol>
+                            <cargo.jboss.management-http.port>9990</cargo.jboss.management-http.port>
                         </properties>
                     </configuration>
-                    <deployables>
-                        <deployable>
-                            <location>${project.build.directory}/${project.build.finalName}.${project.packaging}</location>
-                        </deployable>
-                    </deployables>
                 </configuration>
                 <dependencies>
                     <dependency>
-                        <groupId>org.glassfish.main.deployment</groupId>
-                        <artifactId>deployment-client</artifactId>
-                        <version>4.1</version>
+                        <groupId>org.wildfly</groupId>
+                        <artifactId>wildfly-controller-client</artifactId>
+                        <version>8.2.0.Final</version>
                     </dependency>
                 </dependencies>
             </plugin>

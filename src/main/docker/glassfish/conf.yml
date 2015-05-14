@@ -1,7 +1,0 @@
-ports:
-    - 8080
-    - 4848
-healthChecks:
-  pings:
-    - url: http://localhost:8080
-      pattern: Your server is now running
