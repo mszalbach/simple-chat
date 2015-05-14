@@ -2,8 +2,8 @@ machine:
   services:
     - docker
 dependencies:
- override:
+  override:
     - mvn integration-test
 test:
   override:
-    - true
+    - echo "Hallo"
