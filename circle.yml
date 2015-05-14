@@ -2,5 +2,5 @@ machine:
   services:
     - docker
 dependencies:
-  post:
-    - mvn dependency:resolve-plugins
+ override:
+    - mvn dependency:go-offline
