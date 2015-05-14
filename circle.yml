@@ -6,4 +6,4 @@ dependencies:
     - mvn integration-test
 test:
   override:
-    - true
+    - echo "do nothing since cache works better in dependency phase"
