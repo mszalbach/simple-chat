@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        var ws;
+
+        $( document ).ready( function () {
+            //ws://domain:port#/webcontext(project name)/serverendpoint
+            ws = new WebSocket( "ws://" + getRootUrl() + "/simple-chat-1.0-SNAPSHOT/websocket" );
+
+            ws.onopen = function ( event ) {
+            };
+
+            ws.onmessage = function ( event ) {
+                onMessage( event )
+            };
+
+            ws.onclose = function ( event ) {
+            };
+
+            ws.onerror = function ( event ) {
+                alert( "Error :  " + event.data );
+            };
+
+        } );
+
+        function onLogin( event ) {
+            $( '#name' ).val( $( '#name' ).val() + event.data + "\n" );
+        }
+
+
+        function onMessage( event ) {
+            $( '#messages' ).val( $( '#messages' ).val() + event.data + "\n" );
+            $( '#messages' ).animate( {
+                                          scrollTop: $( '#messages' ).height()
+                                      }, 1000 );
+        }
+
+        function sendMessage() {
+            var message = $( '#name' ).val() + " - " + $( '#message' ).val();
+            ws.send( message );
+            $( '#message' ).val( '' );
+        }
+
+        function getRootUrl() {
+            var defaultPorts = {"http:": 80, "https:": 443};
+
+            return  window.location.hostname
+                    + (((window.location.port)
+                    && (window.location.port != defaultPorts[window.location.protocol]))
+                    ? (":" + window.location.port) : "");
+        }
+
+    </script>
+</head>
+<body>
+<label for="name">Enter your name :</label>
+<input size="20" id="name" value="TBA"/>
+<br/>
+
+<div>Chat Window</div>
+<textarea rows="10" id="messages" style="width: 490px;" readonly="readonly"></textarea>
+<br/>
+<input type="text" id="message" size="60"/>
+<input value="Send" onclick="sendMessage();" type="button"/>
+</body>
+</html>
