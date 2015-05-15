@@ -8,7 +8,7 @@
 
         $(document).ready(function () {
             //ws://domain:port#/webcontext(project name)/serverendpoint
-            ws = new WebSocket("ws://" + getRootUrl() + "/simple-chat/websocket");
+            ws = new WebSocket("ws://" + getRootUrl() + "/${project.artifactId}/websocket");
 
             ws.onopen = function (event) {
             };
