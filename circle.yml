@@ -1,9 +1,6 @@
 machine:
   services:
     - docker
-dependencies:
-  override:
-    - mvn package -B
 test:
-  override:
-    - echo "do nothing since cache works better in dependency phase"
+  overide:
+    - mvn package -B
