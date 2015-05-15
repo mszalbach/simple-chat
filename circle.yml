@@ -2,5 +2,5 @@ machine:
   services:
     - docker
 test:
-  overide:
+  override:
     - mvn package -B
