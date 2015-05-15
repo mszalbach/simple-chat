@@ -26,7 +26,7 @@ public class WebsocketEndpoint {
     public void onOpen(Session aClientSession)
             throws IOException {
         clientSessions.add(aClientSession);
-        aClientSession.getBasicRemote().sendText("Login: " + new Date());
+        aClientSession.getAsyncRemote().sendText("Login: " + new Date());
     }
 
 
