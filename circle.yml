@@ -5,7 +5,7 @@ dependencies:
   cache_directories:
     - "~/docker"
   override:
-    #workaround for using docker in circleci and not downloading everything
+    #workaround for using docker in circleci
     - if [[ -e ~/docker/image.tar.gz ]]; then gunzip ~/docker/image.tar.gz ; fi
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar ; fi
     #doing everything in dependency phase creates a better maven cache
