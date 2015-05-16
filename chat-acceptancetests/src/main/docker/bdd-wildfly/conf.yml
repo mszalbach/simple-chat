@@ -1,0 +1,5 @@
+healthChecks:
+  pings:
+    - url: http://__CONTAINER.IP__:8080
+    - url: http://__CONTAINER.IP__:9990
+      timeout: 10000
