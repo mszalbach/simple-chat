@@ -4,14 +4,16 @@ machine:
 dependencies:
   cache_directories:
     - "~/docker"
+  pre:
+    - sudo apt-get update; sudo apt-get install pigz
   override:
     #workaround for using docker in circleci
-    - if [[ -e ~/docker/image.tar.gz ]]; then gunzip ~/docker/image.tar.gz ; fi
+    - if [[ -e ~/docker/image.tar.gz ]]; then pigz -d ~/docker/image.tar.gz ; fi
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar ; fi
     #doing everything in dependency phase creates a better maven cache
     - mvn verify -B
-    - mkdir -p ~/docker; docker save ubuntu/chat-acceptancetests_bdd-wildfly > ~/docker/image.tar
-    - gzip ~/docker/image.tar
+    - mkdir -p ~/docker; docker save jboss/wildfly > ~/docker/image.tar
+    - pigz ~/docker/image.tar
 test:
   override:
     - echo "do nothing"
