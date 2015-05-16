@@ -5,6 +5,7 @@ dependencies:
   cache_directories:
     - "~/docker"
   pre:
+    #using pigz for maybe faster compression
     - sudo apt-get update; sudo apt-get install pigz
   override:
     #workaround for using docker in circleci
