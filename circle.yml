@@ -2,12 +2,12 @@ machine:
   services:
     - docker
 dependencies:
+  cache_directories:
+    - "~/docker"
   override:
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - mvn verify -B
     - mkdir -p ~/docker; docker save ubuntu/chat-acceptancetests_bdd-wildfly > ~/docker/image.tar
-  cache_directories:
-      - "~/docker"
 test:
   override:
     - echo "do nothing"
