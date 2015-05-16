@@ -5,9 +5,11 @@ dependencies:
   cache_directories:
     - "~/docker"
   override:
-    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
+    - if [[ -e ~/docker/image.tar.gz ]]; then gunzip ~/docker/image.tar.gz; ; fi
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; ; fi
     - mvn verify -B
     - mkdir -p ~/docker; docker save ubuntu/chat-acceptancetests_bdd-wildfly > ~/docker/image.tar
+    - gzip ~/docker/image.tar
 test:
   override:
     - echo "do nothing"
