@@ -5,7 +5,7 @@ dependencies:
   override:
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - mvn verify -B
-    - mkdir -p ~/docker; docker save foobar/chat-acceptancetests_bdd-wildfly > ~/docker/image.tar
+    - mkdir -p ~/docker; docker save ubuntu/chat-acceptancetests_bdd-wildfly > ~/docker/image.tar
   cache_directories:
       - "~/docker"
 test:
