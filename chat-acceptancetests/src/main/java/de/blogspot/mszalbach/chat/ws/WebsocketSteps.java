@@ -27,13 +27,11 @@ public class WebsocketSteps {
     private Map<String, WebsocketClient> wsClients;
 
     private WebSocketContainer container;
-    private String wsHost;
 
     @Before
     public void setup() {
         wsClients = new HashMap<>();
         container = ContainerProvider.getWebSocketContainer();
-        wsHost = System.getProperty("chat-server.ip");
     }
 
     @Given("^a websocket connection (.+)$")
@@ -41,7 +39,7 @@ public class WebsocketSteps {
 
         WebsocketClient ws = new WebsocketClient();
         wsClients.put(clientName, ws);
-        ws.connect(container, new URI("ws://" + wsHost + ":8080/chat-server/websocket"));
+        ws.connect(container, new URI("ws://" + Config.getWebserviceHost() + ":8080/chat-server/websocket"));
     }
 
     @When("^(.+) sends message \"(.+)\"$")
@@ -59,7 +57,7 @@ public class WebsocketSteps {
     }
 
     @Then("^(.+) did not receive message \"(.+)\"$")
-    public void assertMessageNotReceived(String clientName, String message)  {
+    public void assertMessageNotReceived(String clientName, String message) {
         WebsocketClient client = wsClients.get(clientName);
         assertThat(client.getLastMessage(), not(message));
     }
