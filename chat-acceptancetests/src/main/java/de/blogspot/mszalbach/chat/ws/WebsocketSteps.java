@@ -1,6 +1,5 @@
 package de.blogspot.mszalbach.chat.ws;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -8,7 +7,6 @@ import cucumber.api.java.en.When;
 
 import javax.websocket.ContainerProvider;
 import javax.websocket.DeploymentException;
-import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 import java.io.IOException;
 import java.net.URI;
@@ -26,7 +24,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class WebsocketSteps {
 
-    private Map<String, Session> clientSessions;
     private Map<String, WebsocketClient> wsClients;
 
     private WebSocketContainer container;
@@ -34,7 +31,6 @@ public class WebsocketSteps {
 
     @Before
     public void setup() {
-        clientSessions = new HashMap<>();
         wsClients = new HashMap<>();
         container = ContainerProvider.getWebSocketContainer();
         wsHost = System.getProperty("chat-server.ip");
@@ -45,16 +41,14 @@ public class WebsocketSteps {
 
         WebsocketClient ws = new WebsocketClient();
         wsClients.put(clientName, ws);
-        Session clientSession = container.connectToServer(ws, new URI("ws://" + wsHost + ":8080/chat-server/websocket"));
-        clientSessions.put(clientName, clientSession);
-
+        ws.connect(container, new URI("ws://" + wsHost + ":8080/chat-server/websocket"));
     }
 
     @When("^(.+) sends message \"(.+)\"$")
-    public void sendMessage(String clientName, String message) throws IOException, InterruptedException {
-        Session clientSession = clientSessions.get(clientName);
-        clientSession.getBasicRemote().sendText(message);
-        Thread.sleep(100);
+    public void sendMessage(String clientName, String message) throws IOException {
+        WebsocketClient client = wsClients.get(clientName);
+        client.sendText(message);
+
 
     }
 
@@ -72,8 +66,8 @@ public class WebsocketSteps {
 
     @When("^(.+) goes offline$")
     public void clientGoesOffline(String clientName) throws Throwable {
-        Session session = clientSessions.get(clientName);
-        session.close();
-        assertThat(session.isOpen(), is(false));
+        WebsocketClient client = wsClients.get(clientName);
+        client.close();
+        assertThat(client.isOpen(), is(false));
     }
 }
