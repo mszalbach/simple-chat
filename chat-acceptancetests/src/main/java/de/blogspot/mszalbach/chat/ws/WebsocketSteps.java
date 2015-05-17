@@ -59,13 +59,13 @@ public class WebsocketSteps {
     }
 
     @Then("^(.+) did not receive message \"(.+)\"$")
-    public void assertMessageNotReceived(String clientName, String message) throws Throwable {
+    public void assertMessageNotReceived(String clientName, String message)  {
         WebsocketClient client = wsClients.get(clientName);
         assertThat(client.getLastMessage(), not(message));
     }
 
     @When("^(.+) goes offline$")
-    public void clientGoesOffline(String clientName) throws Throwable {
+    public void clientGoesOffline(String clientName) throws IOException {
         WebsocketClient client = wsClients.get(clientName);
         client.close();
         assertThat(client.isOpen(), is(false));

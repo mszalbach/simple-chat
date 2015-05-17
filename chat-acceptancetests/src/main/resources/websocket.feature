@@ -1,4 +1,4 @@
-Feature: As developer I want to receive messages from the chat immediately.
+Feature: As developer I want to receive and send messages via websocket.
 
   Scenario: Send message to other users
     Given a websocket connection client1
