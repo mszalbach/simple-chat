@@ -37,6 +37,10 @@
             <scope>provided</scope>
             <type>war</type>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -113,7 +117,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
                     <systemPropertyVariables>
-                        <chat-server.ip>${docker.bdd-wildfly.ipAddress}</chat-server.ip>
+                        <chat-server.docker.ip>${docker.bdd-wildfly.ipAddress}</chat-server.docker.ip>
                     </systemPropertyVariables>
                     <includes>
                         <include>**/AllStories.java</include>
