@@ -84,7 +84,7 @@
                 </executions>
                 <configuration>
                     <container>
-                        <containerId>wildfly8x</containerId>
+                        <containerId>wildfly9x</containerId>
                         <type>remote</type>
                     </container>
                     <configuration>
