@@ -1,6 +1,3 @@
 ports:
     - 8080
     - 9990
-
-links:
-    - postgres:db
