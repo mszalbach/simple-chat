@@ -1,3 +1,7 @@
+# blacklist
+branches:
+  except:
+    - gh-pages #website branch
 language: java
 jdk:
   - oraclejdk8
