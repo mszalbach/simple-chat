@@ -1,0 +1,11 @@
+@startuml
+title Simple communication example\nfor two clients
+Alice -> Server : sendText("Hallo")
+Server -> WebsocketEndpoint :onMessage(,"Hallo",Alice)
+activate WebsocketEndpoint
+    WebsocketEndpoint -> Server :sendText("Hallo", Alice)
+    WebsocketEndpoint -> Server :sendText("Hallo", Bob)
+deactivate WebsocketEndpoint
+Server -> Alice :"Hallo"
+Server -> Bob : "Hallo"
+@enduml

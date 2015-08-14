@@ -1,0 +1,15 @@
+@startuml
+node "Wildfly Container" {
+    node Wildfly {
+        artifact simplechat.war
+    }
+
+}
+
+node "Database Container" {
+    database Postgres
+}
+
+
+Wildfly -> Postgres
+@enduml

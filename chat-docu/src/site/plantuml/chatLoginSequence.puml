@@ -1,0 +1,10 @@
+@startuml
+title Communication example\nfor Websocket login
+Alice -> Server :connect
+Server -> WebsocketEndpoint : onOpen(Alice)
+activate WebsocketEndpoint
+    WebsocketEndpoint -> WebsocketEndpoint :save Session
+    WebsocketEndpoint -> Server : sendText("login", Alice)
+deactivate WebsocketEndpoint
+Server -> Alice :"login"
+@enduml
