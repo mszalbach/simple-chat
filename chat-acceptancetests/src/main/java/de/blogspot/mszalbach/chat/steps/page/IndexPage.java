@@ -17,12 +17,12 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by foobar on 14.08.15.
  */
-public class WebChat {
+public class IndexPage {
 
     private SeleniumDriver selenium ;
 
 
-    public WebChat() {
+    public IndexPage() {
         selenium = new SeleniumDriver();
     }
 

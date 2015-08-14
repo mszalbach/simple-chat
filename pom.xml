@@ -49,7 +49,7 @@
             </dependency>
             <dependency>
                 <groupId>info.cukes</groupId>
-                <artifactId>cucumber-picocontainer</artifactId>
+                <artifactId>cucumber-java</artifactId>
                 <version>${cucumber.version}</version>
             </dependency>
             <dependency>
