@@ -1,16 +1,19 @@
 general:
   branches:
     ignore:
-      - gh-pages # website branch
+      - gh-pages
+
 machine:
   java:
     version: oraclejdk8
   services:
     - docker
+
 dependencies:
   override:
     #doing everything in dependency phase creates a better maven cache
     - mvn verify -B
+
 test:
   override:
     - echo "do nothing"
