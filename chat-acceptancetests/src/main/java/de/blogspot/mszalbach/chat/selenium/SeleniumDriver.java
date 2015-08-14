@@ -14,10 +14,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by foobar on 14.08.15.
  */
 public class SeleniumDriver {
-    private static WebDriver webDriver;
+    private WebDriver webDriver;
 
 
-    public synchronized static WebDriver getCurrentDriver() {
+    public WebDriver getCurrentDriver() {
         if (webDriver==null) {
             try {
                 webDriver = Config.getWebDriver();
@@ -34,13 +34,13 @@ public class SeleniumDriver {
         return getCurrentDriver();
     }
 
-    private static class BrowserCleanup implements Runnable {
+    private class BrowserCleanup implements Runnable {
         public void run() {
             close();
         }
     }
 
-    public static void close() {
+    public void close() {
         try {
             getCurrentDriver().quit();
             //without this the browser will not be closed
