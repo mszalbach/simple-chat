@@ -30,6 +30,15 @@
             <item name="arc42 Documentation" href="doc/00_TOC.html">
                 <item name="1. Introduction and Goals" href="doc/01_Introduction_and_Goals.html"/>
                 <item name="2. Constraints" href="doc/02_Constraints.html"/>
+                <item name="3. Context" href="doc/03_Context.html"/>
+                <item name="4. Solution Strategy" href="doc/04_Solution_Strategy.html"/>
+                <item name="5. Building Block View" href="doc/05_Building_Block_View.html"/>
+                <item name="6. Runtime View" href="doc/06_Runtime_View.html"/>
+                <item name="7. Deployment View" href="doc/07_Deployment_View.html"/>
+                <item name="8. Concepts" href="doc/08_Concepts.html"/>
+                <item name="9. Design Decisions" href="doc/09_Design_Decisions.html"/>
+                <item name="10. Quality Scenarios" href="doc/10_Quality_Scenarios.html"/>
+                <item name="11. Technical Risks" href="doc/11_Technical_Risks.html"/>
                 <item name="12. Glossary" href="doc/12_Glossary.html"/>
             </item>
         </menu>
