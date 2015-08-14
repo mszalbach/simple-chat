@@ -51,8 +51,7 @@ public class SeleniumDriver {
 
 
     public void loadPage(String url) {
-        ;
-        getCurrentDriver().get(url);
+        getCurrentDriver().get("http://" + Config.getApplicationURL() + "/" + Config.getApplicationContext() + "/"+url);
     }
 
     public void waitUntilPageContainsId(final String id) throws InterruptedException {

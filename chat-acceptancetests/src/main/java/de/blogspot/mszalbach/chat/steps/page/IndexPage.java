@@ -54,7 +54,7 @@ public class IndexPage {
     }
 
     private void openIndex() {
-        selenium.loadPage("http://" + Config.getApplicationURL() + "/" + Config.getApplicationContext() + "/index.html");
+        selenium.loadPage("index.html");
     }
 
 }
