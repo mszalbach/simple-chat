@@ -4,6 +4,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import de.blogspot.mszalbach.chat.Config;
 
 import javax.websocket.ContainerProvider;
 import javax.websocket.DeploymentException;
@@ -39,7 +40,7 @@ public class WebsocketSteps {
 
         WebsocketClient ws = new WebsocketClient();
         wsClients.put(clientName, ws);
-        ws.connect(container, new URI("ws://" + Config.getWebserviceHost() + ":8080/chat-server/websocket"));
+        ws.connect(container, new URI("ws://" + Config.getApplicationURL()+"/"+Config.getApplicationContext()+ "/websocket"));
     }
 
     @When("^(.+) sends message \"(.+)\"$")

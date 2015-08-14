@@ -67,6 +67,11 @@
                 <artifactId>guava</artifactId>
                 <version>18.0</version>
             </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>2.47.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -112,6 +117,13 @@
                     <groupId>org.codehaus.cargo</groupId>
                     <artifactId>cargo-maven2-plugin</artifactId>
                     <version>1.4.15</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.wildfly</groupId>
+                            <artifactId>wildfly-controller-client</artifactId>
+                            <version>8.2.0.Final</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                 <groupId>com.github.jeluard</groupId>
