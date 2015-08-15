@@ -4,6 +4,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.runtime.java.guice.ScenarioScoped;
 import de.blogspot.mszalbach.chat.Config;
 
 import javax.websocket.ContainerProvider;
@@ -23,6 +24,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Created by foobar on 16.05.15.
  */
+@ScenarioScoped
 public class WebsocketSteps {
 
     private Map<String, WebsocketClient> wsClients;

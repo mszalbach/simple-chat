@@ -1,12 +1,9 @@
 package de.blogspot.mszalbach.chat.selenium;
 
-import cucumber.api.java.After;
 import de.blogspot.mszalbach.chat.Config;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 

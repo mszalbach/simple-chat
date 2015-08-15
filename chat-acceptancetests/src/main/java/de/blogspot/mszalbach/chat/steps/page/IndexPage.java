@@ -3,12 +3,11 @@ package de.blogspot.mszalbach.chat.steps.page;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.runtime.java.guice.ScenarioScoped;
 import de.blogspot.mszalbach.chat.selenium.SeleniumDriver;
-import de.blogspot.mszalbach.chat.Config;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
+import javax.inject.Inject;
 import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -17,14 +16,17 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by foobar on 14.08.15.
  */
+@ScenarioScoped
 public class IndexPage {
 
     private SeleniumDriver selenium ;
 
 
-    public IndexPage() {
-        selenium = new SeleniumDriver();
+    @Inject
+    public IndexPage(SeleniumDriver selenium) {
+        this.selenium = selenium;
     }
+
 
     @Given("I visit the chat website")
     public void visitIndex() {
