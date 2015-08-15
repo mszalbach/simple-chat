@@ -7,17 +7,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.inject.Inject;
+
 /**
  * Created by foobar on 14.08.15.
  */
 public class SeleniumDriver {
     private WebDriver webDriver;
+    private Config config;
+
+    @Inject
+    SeleniumDriver(Config config) {
+
+        this.config = config;
+    }
 
 
     public WebDriver getCurrentDriver() {
         if (webDriver==null) {
             try {
-                webDriver = Config.getWebDriver();
+                webDriver = config.getWebDriver();
             } finally{
                 Runtime.getRuntime().addShutdownHook(
                         new Thread(new BrowserCleanup()));
@@ -48,7 +57,7 @@ public class SeleniumDriver {
 
 
     public void loadPage(String url) {
-        getCurrentDriver().get("http://" + Config.getApplicationURL() + "/" + Config.getApplicationContext() + "/"+url);
+        getCurrentDriver().get("http://" + config.getApplicationURL() + "/" + config.getApplicationContext() + "/" + url);
     }
 
     public void waitUntilPageContainsId(final String id) throws InterruptedException {
