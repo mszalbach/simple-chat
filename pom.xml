@@ -23,6 +23,7 @@
         <!-- used for linux docker. For boot2docker use the ip from "boot2docker ip" command. -->
         <docker.host>unix:///var/run/docker.sock</docker.host>
         <cucumber.version>1.2.4</cucumber.version>
+        <log4j.version>2.3</log4j.version>
     </properties>
 
     <dependencyManagement>
@@ -81,6 +82,16 @@
                 <groupId>com.google.inject</groupId>
                 <artifactId>guice</artifactId>
                 <version>4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -157,6 +168,11 @@
                         <artifactId>site-maven-plugin</artifactId>
                         <version>0.12</version>
                     </plugin>
+                <plugin>
+                    <groupId>net.masterthought</groupId>
+                    <artifactId>maven-cucumber-reporting</artifactId>
+                    <version>0.0.8</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>

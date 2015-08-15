@@ -6,6 +6,6 @@ import org.junit.runner.RunWith;
  * Created by foobar on 15.05.15.
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = { "pretty", "json:target/cucumber.json", "html:target/cucumber" })
+@CucumberOptions(plugin = {"pretty", "json:target/cucumber.json"})
 public class AllStories {
 }
