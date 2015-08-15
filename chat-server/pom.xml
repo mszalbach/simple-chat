@@ -12,10 +12,6 @@
     <artifactId>chat-server</artifactId>
     <packaging>war</packaging>
 
-    <properties>
-        <wildfly.remote.user>admin</wildfly.remote.user>
-        <wildfly.remote.password>admin</wildfly.remote.password>
-    </properties>
 
     <dependencies>
         <dependency>

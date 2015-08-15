@@ -24,6 +24,10 @@
         <docker.host>unix:///var/run/docker.sock</docker.host>
         <cucumber.version>1.2.4</cucumber.version>
         <log4j.version>2.3</log4j.version>
+
+        <docker-wildfly.version>9.0.1.Final</docker-wildfly.version>
+        <wildfly.remote.user>admin</wildfly.remote.user>
+        <wildfly.remote.password>admin</wildfly.remote.password>
     </properties>
 
     <dependencyManagement>
@@ -142,7 +146,7 @@
                         <dependency>
                             <groupId>org.wildfly</groupId>
                             <artifactId>wildfly-controller-client</artifactId>
-                            <version>8.2.0.Final</version>
+                            <version>8.2.1.Final</version>
                         </dependency>
                     </dependencies>
                 </plugin>
