@@ -129,7 +129,7 @@
                 <plugin>
                     <groupId>com.alexecollins.docker</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
-                    <version>2.10.1</version>
+                    <version>2.10.2</version>
                     <configuration>
                         <host>${docker.host}</host>
                     </configuration>
@@ -154,7 +154,7 @@
                         <dependency>
                             <groupId>net.sourceforge.plantuml</groupId>
                             <artifactId>plantuml</artifactId>
-                            <version>8019</version>
+                            <version>8029</version>
                         </dependency>
                     </dependencies>
                 </plugin>
