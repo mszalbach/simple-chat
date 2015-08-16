@@ -26,8 +26,7 @@
 
     <body>
         <menu>
-            <item name="Introduction" href="index.html"/>
-            <item name="arc42 Documentation" href="doc/00_TOC.html">
+            <item name="arc42 Documentation" href="index.html">
                 <item name="1. Introduction and Goals" href="doc/01_Introduction_and_Goals.html"/>
                 <item name="2. Constraints" href="doc/02_Constraints.html"/>
                 <item name="3. Context" href="doc/03_Context.html"/>
