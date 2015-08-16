@@ -1,0 +1,10 @@
+@startuml
+actor User
+component "simple-chat" as system
+User .> ()Browser
+Browser -- system
+node userdata
+node messages
+system - userdata
+system -- messages
+@enduml

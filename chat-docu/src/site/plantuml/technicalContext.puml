@@ -1,0 +1,12 @@
+@startuml
+actor User
+component "simple-chat" as system
+User .> ()Browser
+Browser - system:http
+database database {
+    node userdata
+    node messages
+}
+system - userdata :jpa
+system -- messages :jpa
+@enduml
