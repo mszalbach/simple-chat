@@ -17,8 +17,7 @@ See https://maven.apache.org/guides/mini/guide-encryption.html how to enrypt you
 ##Upload new Documentation
 
 ```
-cd chat-docu
-mvn clean site
+mvn -pl chat-docu clean site
 ```
 
 Visit http://mszalbach.github.io/simple-chat
