@@ -1,3 +1,7 @@
+links:
+    - mongodb:db
+
 ports:
     - 8080
     - 9990
+

@@ -1,6 +1,6 @@
 @startuml
 title Communication example\nfor Websocket login
-Alice -> Server :connect
+Alice -> Server :connect("ws:...")
 Server -> WebsocketEndpoint : onOpen(Alice)
 activate WebsocketEndpoint
     WebsocketEndpoint -> WebsocketEndpoint :save Session

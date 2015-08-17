@@ -2,7 +2,7 @@
 This section introduces the task and outlines the objectives for simple-chat.
 
 #### 1.1 Requirements Overview
-simple-chat allow hosting a chat on the internet. This is a simple example for using different technologies and development practices.
+simple-chat allow hosting a chat server with a web interface. This is a simple example for using different technologies and development practices.
 It should also work as reference when you want to include one of the technologies in a different project.
 
 

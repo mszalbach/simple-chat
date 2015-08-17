@@ -12,8 +12,6 @@ Will use the chat system and wants to chat with other Users.
 A HTML5 compatible Browser which will render the website hosted by simple-chat.
 ##### messages
 A storage for the chat messages so Users can view a history of old messages or even receive offline messages.
-##### userdata
-Additional information about the users like full name. Also used for authentification.
 
 #### 3.2 Technical Context
 

@@ -21,5 +21,5 @@
 
 | Convention               | Description                                               |
 |--------------------------|-----------------------------------------------------------|
-| Documentation guidelines | the arc42 template is used for Architecture Documentation |
+| Documentation guidelines | for Architecture Documentation the arc42 template is used |
 | Language                 | all text is written in American English                   |

@@ -3,10 +3,8 @@ actor User
 component "simple-chat" as system
 User .> ()Browser
 Browser - system:http
-database database {
-    node userdata
+database MongoDB as db {
     node messages
 }
-system - userdata :jpa
-system -- messages :jpa
+system - db :mongodb://
 @enduml
