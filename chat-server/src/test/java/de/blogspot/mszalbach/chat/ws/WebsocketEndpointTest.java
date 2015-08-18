@@ -1,9 +1,12 @@
 package de.blogspot.mszalbach.chat.ws;
 
+import de.blogspot.mszalbach.chat.Controller.MessageController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.websocket.EncodeException;
@@ -35,11 +38,16 @@ public class WebsocketEndpointTest {
     @Mock
     private RemoteEndpoint.Async client2Endpoint;
 
+    @Mock
+    private MessageController controller;
+
+    @InjectMocks
     private WebsocketEndpoint ws;
 
     @Before
     public void setup() {
-        ws = new WebsocketEndpoint();
+
+        MockitoAnnotations.initMocks(this);
         when(client1.getAsyncRemote()).thenReturn(client1Endpoint);
         when(client2.getAsyncRemote()).thenReturn(client2Endpoint);
     }
@@ -54,6 +62,11 @@ public class WebsocketEndpointTest {
 
         verify(client1Endpoint).sendText("Hello");
         verify(client2Endpoint).sendText("Hello");
+
+        //ArgumentCaptor<Message> savedMessageCaptor = ArgumentCaptor.forClass(Message.class);
+        //verify(controller).save(savedMessageCaptor.capture());
+
+        // assertThat(savedMessageCaptor.getValue().message, is("Hello"));
     }
 
     @Test

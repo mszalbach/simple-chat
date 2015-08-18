@@ -1,8 +1,11 @@
 package de.blogspot.mszalbach.chat.ws;
 
+import de.blogspot.mszalbach.chat.Controller.MessageController;
+import de.blogspot.mszalbach.chat.entity.Message;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
@@ -26,6 +29,9 @@ public class WebsocketEndpoint {
 
     private static final Logger LOGGER = LogManager.getLogger(WebsocketEndpoint.class);
 
+    @Inject
+    private MessageController controller;
+
 
     @OnOpen
     public void onOpen(Session aClientSession)
@@ -46,6 +52,8 @@ public class WebsocketEndpoint {
             throws IOException,
             EncodeException {
 
+        controller.save(new Message(client.getId(), message));
+
         for (Session clientSession : CLIENT_SESSIONS) {
             clientSession.getAsyncRemote().sendText(message);
         }
@@ -57,6 +65,5 @@ public class WebsocketEndpoint {
         LOGGER.error("Error : " + aclientSession + " " + aThrowable);
 
     }
-
 
 }
