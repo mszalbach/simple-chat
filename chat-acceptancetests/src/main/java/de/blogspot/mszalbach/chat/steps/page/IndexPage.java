@@ -6,6 +6,8 @@ import cucumber.api.java.en.When;
 import cucumber.runtime.java.guice.ScenarioScoped;
 import de.blogspot.mszalbach.chat.selenium.SeleniumDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -19,7 +21,7 @@ import static org.junit.Assert.assertThat;
 @ScenarioScoped
 public class IndexPage {
 
-    private SeleniumDriver selenium ;
+    private SeleniumDriver selenium;
 
 
     @Inject
@@ -34,7 +36,7 @@ public class IndexPage {
     }
 
     @When("I change my nickname to \"(.+)\"$")
-    public void changeNickname(String name ) {
+    public void changeNickname(String name) {
         selenium.typeIntoField("name", name);
     }
 
@@ -47,6 +49,7 @@ public class IndexPage {
     @Then("^webchat contains message \"(.+)\"$")
     public void expectMessage(String message) {
         String text = selenium.getDriver().findElement(By.id("messages")).getAttribute("value");
+        new WebDriverWait(selenium.getDriver(), 20).until(ExpectedConditions.textToBePresentInElementLocated(By.id("messages"), message));
         assertThat(text.contains(message), is(true));
 
     }
