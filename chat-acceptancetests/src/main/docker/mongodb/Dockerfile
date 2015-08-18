@@ -1,0 +1,3 @@
+FROM mongo:3.0.5
+EXPOSE 28017
+CMD ["mongod", "--rest"]

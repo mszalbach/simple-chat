@@ -1,0 +1,4 @@
+healthChecks:
+  pings:
+    - url: http://__CONTAINER.IP__:28017
+
