@@ -1,7 +1,6 @@
 @web
 Feature: As a website user I want to chat with others
 
-  @Ignore
   Scenario: Send message to myself
     Given I visit the chat website
     When I change my nickname to "client1"
