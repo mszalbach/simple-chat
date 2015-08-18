@@ -15,5 +15,7 @@ test:
   post:
       - mkdir -p $CIRCLE_TEST_REPORTS/junit/
       - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+      - mkdir -p $CIRCLE_TEST_REPORTS/selenium/
+      - find . -type f -regex ".*/target/failsafe-reports/.*png" -exec cp {} $CIRCLE_TEST_REPORTS/selenium/ \;
       - mkdir -p $CIRCLE_TEST_REPORTS/cucumber/
       - cp -R */target/cucumber-html-reports/* $CIRCLE_TEST_REPORTS/cucumber/
