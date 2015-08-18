@@ -1,3 +1,4 @@
+@ignore
 @web
 Feature: As a website user I want to chat with others
 
