@@ -4,6 +4,8 @@ import javax.websocket.*;
 import java.io.IOException;
 import java.net.URI;
 import java.util.LinkedList;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by foobar on 16.05.15.
@@ -15,10 +17,13 @@ public class WebsocketClient {
 
     private Session clientSession;
 
+    private CountDownLatch loginMessageLatch = new CountDownLatch(1);
+
     @OnMessage
     public void onMessage(String message, Session client)
             throws IOException,
             EncodeException {
+        loginMessageLatch.countDown();
         messages.add(message);
     }
 
@@ -29,8 +34,11 @@ public class WebsocketClient {
         return messages.getLast();
     }
 
-    public void connect(WebSocketContainer container, URI uri) throws IOException, DeploymentException {
+
+    public void connect(WebSocketContainer container, URI uri) throws IOException, DeploymentException, InterruptedException {
         this.clientSession = container.connectToServer(this, uri);
+        loginMessageLatch.await(10, TimeUnit.SECONDS);
+
     }
 
     public void close() throws IOException {

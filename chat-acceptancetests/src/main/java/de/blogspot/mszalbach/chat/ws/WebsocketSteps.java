@@ -46,7 +46,7 @@ public class WebsocketSteps {
     }
 
     @Given("^a websocket connection (.+)$")
-    public void createWebsocketConnection(String clientName) throws URISyntaxException, IOException, DeploymentException {
+    public void createWebsocketConnection(String clientName) throws URISyntaxException, IOException, DeploymentException, InterruptedException {
 
         WebsocketClient ws = new WebsocketClient();
         wsClients.put(clientName, ws);
