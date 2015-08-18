@@ -1,5 +1,8 @@
 package de.blogspot.mszalbach.chat.ws;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
@@ -19,20 +22,22 @@ import java.util.Set;
 public class WebsocketEndpoint {
 
     // Create a Set to hold client sessions
-    private static final Set<Session> clientSessions = Collections.synchronizedSet(new HashSet<Session>());
+    private static final Set<Session> CLIENT_SESSIONS = Collections.synchronizedSet(new HashSet<>());
+
+    private static final Logger LOGGER = LogManager.getLogger(WebsocketEndpoint.class);
 
 
     @OnOpen
     public void onOpen(Session aClientSession)
             throws IOException {
-        clientSessions.add(aClientSession);
+        CLIENT_SESSIONS.add(aClientSession);
         aClientSession.getAsyncRemote().sendText("Login: " + new Date());
     }
 
 
     @OnClose
     public void onClose(Session aClientSession) {
-        clientSessions.remove(aClientSession);
+        CLIENT_SESSIONS.remove(aClientSession);
     }
 
 
@@ -41,7 +46,7 @@ public class WebsocketEndpoint {
             throws IOException,
             EncodeException {
 
-        for (Session clientSession : clientSessions) {
+        for (Session clientSession : CLIENT_SESSIONS) {
             clientSession.getAsyncRemote().sendText(message);
         }
     }
@@ -49,7 +54,7 @@ public class WebsocketEndpoint {
 
     @OnError
     public void onError(Session aclientSession, Throwable aThrowable) {
-        System.out.println("Error : " + aclientSession + " " + aThrowable);
+        LOGGER.error("Error : " + aclientSession + " " + aThrowable);
 
     }
 
