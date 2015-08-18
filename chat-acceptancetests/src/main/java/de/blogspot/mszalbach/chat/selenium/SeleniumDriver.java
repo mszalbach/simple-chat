@@ -54,8 +54,9 @@ public class SeleniumDriver {
     }
 
     private void takeScreenshot(String fileName) {
-        new File("target/surefire-reports/").mkdirs(); // Insure directory is there
-        try (FileOutputStream out = new FileOutputStream("target/failsafe-reports/" + fileName + ".png")) {
+        File screenshotFolder = new File("target/failsafe-reports/");
+        screenshotFolder.mkdirs();
+        try (FileOutputStream out = new FileOutputStream(new File(screenshotFolder, fileName + ".png"))) {
             out.write(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES));
         } catch (IOException e) {
             LOGGER.error("Could not take screenshot.", e);
