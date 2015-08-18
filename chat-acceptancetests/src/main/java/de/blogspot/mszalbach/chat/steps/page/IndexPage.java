@@ -48,8 +48,8 @@ public class IndexPage {
 
     @Then("^webchat contains message \"(.+)\"$")
     public void expectMessage(String message) {
-        String text = selenium.getDriver().findElement(By.id("messages")).getAttribute("value");
         new WebDriverWait(selenium.getDriver(), 10).until(ExpectedConditions.textToBePresentInElementValue(By.id("messages"), message));
+        String text = selenium.getDriver().findElement(By.id("messages")).getAttribute("value");
         assertThat(text.contains(message), is(true));
 
     }
