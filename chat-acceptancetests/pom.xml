@@ -164,7 +164,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>${parent.artifactId}</projectName>
+                            <projectName>${project.parent.artifactId}</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-html-reports</outputDirectory>
                             <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
                             <enableFlashCharts>false</enableFlashCharts>

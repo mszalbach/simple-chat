@@ -22,3 +22,10 @@ mvn -pl chat-docu clean site
 
 Visit http://mszalbach.github.io/simple-chat
 
+## Build locally
+```
+mvn -Dgithub.site.dryRun=true -pl chat-docu clean site
+```
+
+
+
