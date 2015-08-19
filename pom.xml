@@ -162,9 +162,9 @@
                     </dependencies>
                 </plugin>
                 <plugin>
-                <groupId>com.github.jeluard</groupId>
-                <artifactId>plantuml-maven-plugin</artifactId>
-                <version>1.1</version>
+                    <groupId>com.github.jeluard</groupId>
+                    <artifactId>plantuml-maven-plugin</artifactId>
+                    <version>1.1</version>
                     <dependencies>
                         <dependency>
                             <groupId>net.sourceforge.plantuml</groupId>
@@ -178,15 +178,25 @@
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.4</version>
                 </plugin>
-                    <plugin>
-                        <groupId>com.github.github</groupId>
-                        <artifactId>site-maven-plugin</artifactId>
-                        <version>0.12</version>
-                    </plugin>
+                <plugin>
+                    <groupId>com.github.github</groupId>
+                    <artifactId>site-maven-plugin</artifactId>
+                    <version>0.12</version>
+                </plugin>
                 <plugin>
                     <groupId>net.masterthought</groupId>
                     <artifactId>maven-cucumber-reporting</artifactId>
                     <version>0.1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.10</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.5.5</version>
                 </plugin>
             </plugins>
         </pluginManagement>
