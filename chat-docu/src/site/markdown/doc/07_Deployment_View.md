@@ -9,10 +9,17 @@ The containers are linked via Docker mechanism and expose there ports to the OS 
 |Port   | Description                                                                             |
 |------:|-----------------------------------------------------------------------------------------|
 | 8080  | Http Port of Wildfly to access the website                                              |
-| 9990  | Wildfly admin port to manage the running instance                                       |
-| 27017 | MongoDB Port to access the database. This is just for testing and will be removed later |
 
 ![Docker Deployment](../images/uml/dockerDeployment.png "Docker Deployment")
 
+The module docker-installer builds an zip file containing all files to start the chat with docker-compose.
+
+```
+unzip docker-installer-${project.version}-distribution.zip
+cd simple-chat-${project.versionId}
+docker-compose up
+```
+
 #### 7.2 Application Server Deployment
-TBA
+simple-chat consists of a simple war file but requieres some other services currently implemented with Docker and linking.
+There is no easy mechanism to configure this requirements. And so this is currently not supported.
