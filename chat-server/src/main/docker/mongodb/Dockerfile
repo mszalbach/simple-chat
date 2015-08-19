@@ -1,3 +1,3 @@
-FROM mongo:3.0.5
+FROM mongo:${docker-mongodb.version}
 EXPOSE 28017
 CMD ["mongod", "--rest"]
