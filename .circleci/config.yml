@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+
+    working_directory: ~/simple-chat
+
+    docker:
+      - image: circleci/openjdk:8-jdk
+
+    steps:
+
+      - checkout
+
+      - restore_cache:
+          key: simple-chat-{{ checksum "pom.xml" }}
+
+      - run: mvn verify -B
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: simple-chat-{{ checksum "pom.xml" }}
